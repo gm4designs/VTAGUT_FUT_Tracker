@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTAGUT WL TRACKER</title>
+    <style>
+        /* Estilo do corpo da página */
+        body {
+            background-color: transparent;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .tracker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #ff0000, #f7941d);
+            border-radius: 15px;
+            padding: 20px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 250px;
+            position: relative;
+        }
+
+        .tracker .score {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .tracker .wins {
+            color: #ffd700; /* Ouro para vitórias */
+            margin-right: 75px;
+        }
+
+        .tracker .losses {
+            color: #fff; /* Branco para derrotas */
+            margin-left: 75px;
+        }
+
+        .tracker img {
+            position: absolute;
+            left: calc(50% - 40px);
+            width: 80px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .controls button {
+            background-color: #f7941d;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            color: #fff;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .controls button:hover {
+            background-color: #e67e22;
+        }
+
+        .reset {
+            background-color: #ff0000;
+        }
+
+        .reset:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="tracker">
+            <span class="score wins" id="wins">0</span>
+            <img src="./img/WL_logo.png" alt="FIFA Logo">
+            <span class="score losses" id="losses">0</span>
+        </div>
+        <div class="controls">
+            <button onclick="addWin()">Adicionar Vitória</button>
+            <button onclick="addLoss()">Adicionar Derrota</button>
+            <button class="reset" onclick="resetStats()">Reiniciar</button>
+        </div>
+    </div>
+    <script>
+
+
+    // Atualiza automaticamente os valores ao vivo
+    setInterval(function() {
+        let wins = document.getElementById("wins");
+        let losses = document.getElementById("losses");
+        // Esse código vai atualizar o conteúdo ao vivo sem a necessidade de recarregar a página
+        // Adapte isso conforme o seu código de atualização de valores
+    }, 5000); // A cada 5 segundos
+
+        // Funções de controle para atualizar o score
+        function addWin() {
+            let wins = document.getElementById("wins");
+            wins.textContent = parseInt(wins.textContent) + 1;
+        }
+
+        function addLoss() {
+            let losses = document.getElementById("losses");
+            losses.textContent = parseInt(losses.textContent) + 1;
+        }
+
+        function resetStats() {
+            let wins = document.getElementById("wins");
+            let losses = document.getElementById("losses");
+            wins.textContent = 0;
+            losses.textContent = 0;
+        }
+    </script>
+</body>
+</html>
