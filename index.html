@@ -94,33 +94,39 @@
             <button class="reset" onclick="resetStats()">Reiniciar</button>
         </div>
     </div>
-    <script>
+        <script>
+        // Código JavaScript começa aqui
 
+        // Recupera as vitórias e derrotas armazenadas no localStorage ou define como 0
+        let wins = localStorage.getItem('wins') || 0;
+        let losses = localStorage.getItem('losses') || 0;
 
-    // Atualiza automaticamente os valores ao vivo
-    setInterval(function() {
-        let wins = document.getElementById("wins");
-        let losses = document.getElementById("losses");
-        // Esse código vai atualizar o conteúdo ao vivo sem a necessidade de recarregar a página
-        // Adapte isso conforme o seu código de atualização de valores
-    }, 5000); // A cada 5 segundos
+        // Atualiza a interface com os valores armazenados
+        document.getElementById('wins').textContent = wins;
+        document.getElementById('losses').textContent = losses;
 
-        // Funções de controle para atualizar o score
+        // Função para adicionar vitória
         function addWin() {
-            let wins = document.getElementById("wins");
-            wins.textContent = parseInt(wins.textContent) + 1;
+            wins++;
+            document.getElementById('wins').textContent = wins;
+            localStorage.setItem('wins', wins); // Armazena no localStorage
         }
 
+        // Função para adicionar derrota
         function addLoss() {
-            let losses = document.getElementById("losses");
-            losses.textContent = parseInt(losses.textContent) + 1;
+            losses++;
+            document.getElementById('losses').textContent = losses;
+            localStorage.setItem('losses', losses); // Armazena no localStorage
         }
 
+        // Função para reiniciar o contador
         function resetStats() {
-            let wins = document.getElementById("wins");
-            let losses = document.getElementById("losses");
-            wins.textContent = 0;
-            losses.textContent = 0;
+            wins = 0;
+            losses = 0;
+            document.getElementById('wins').textContent = wins;
+            document.getElementById('losses').textContent = losses;
+            localStorage.setItem('wins', wins); // Armazena no localStorage
+            localStorage.setItem('losses', losses); // Armazena no localStorage
         }
     </script>
 </body>
