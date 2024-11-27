@@ -94,40 +94,47 @@
             <button class="reset" onclick="resetStats()">Reiniciar</button>
         </div>
     </div>
-        <script>
-        // Código JavaScript começa aqui
+<script>
+    // Código JavaScript começa aqui
 
-        // Recupera as vitórias e derrotas armazenadas no localStorage ou define como 0
-        let wins = localStorage.getItem('wins') || 0;
-        let losses = localStorage.getItem('losses') || 0;
+    // Recupera as vitórias e derrotas armazenadas no localStorage ou define como 0
+    let wins = localStorage.getItem('wins') || 0;
+    let losses = localStorage.getItem('losses') || 0;
 
-        // Atualiza a interface com os valores armazenados
+    // Atualiza a interface com os valores armazenados
+    document.getElementById('wins').textContent = wins;
+    document.getElementById('losses').textContent = losses;
+
+    // Função para adicionar vitória
+    function addWin() {
+        wins++;
+        document.getElementById('wins').textContent = wins;
+        localStorage.setItem('wins', wins); // Armazena no localStorage
+    }
+
+    // Função para adicionar derrota
+    function addLoss() {
+        losses++;
+        document.getElementById('losses').textContent = losses;
+        localStorage.setItem('losses', losses); // Armazena no localStorage
+    }
+
+    // Função para reiniciar o contador
+    function resetStats() {
+        wins = 0;
+        losses = 0;
         document.getElementById('wins').textContent = wins;
         document.getElementById('losses').textContent = losses;
+        localStorage.setItem('wins', wins); // Armazena no localStorage
+        localStorage.setItem('losses', losses); // Armazena no localStorage
+    }
 
-        // Função para adicionar vitória
-        function addWin() {
-            wins++;
-            document.getElementById('wins').textContent = wins;
-            localStorage.setItem('wins', wins); // Armazena no localStorage
-        }
+    // Adiciona recarregamento automático da página a cada 5 segundos (5000 milissegundos)
+    setInterval(function() {
+        location.reload(); // Recarrega a página
+    }, 5000);
 
-        // Função para adicionar derrota
-        function addLoss() {
-            losses++;
-            document.getElementById('losses').textContent = losses;
-            localStorage.setItem('losses', losses); // Armazena no localStorage
-        }
+</script>
 
-        // Função para reiniciar o contador
-        function resetStats() {
-            wins = 0;
-            losses = 0;
-            document.getElementById('wins').textContent = wins;
-            document.getElementById('losses').textContent = losses;
-            localStorage.setItem('wins', wins); // Armazena no localStorage
-            localStorage.setItem('losses', losses); // Armazena no localStorage
-        }
-    </script>
 </body>
 </html>
